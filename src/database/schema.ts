@@ -8,6 +8,6 @@ export const users = pgTable("users", {
 
 export const courses = pgTable("courses", {
   id: uuid().primaryKey().defaultRandom(),
-  name: text().notNull(),
+  title: text().notNull(),
   description: text().notNull(),
 });

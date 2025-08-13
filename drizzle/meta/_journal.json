@@ -15,6 +15,13 @@
       "when": 1755091484822,
       "tag": "0001_unknown_meltdown",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755093292661,
+      "tag": "0002_late_garia",
+      "breakpoints": true
     }
   ]
 }
