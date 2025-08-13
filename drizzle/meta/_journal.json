@@ -8,6 +8,13 @@
       "when": 1755091110183,
       "tag": "0000_noisy_whizzer",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1755091484822,
+      "tag": "0001_unknown_meltdown",
+      "breakpoints": true
     }
   ]
 }

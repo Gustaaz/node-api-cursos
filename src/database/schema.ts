@@ -4,4 +4,10 @@ export const users = pgTable("users", {
   id: uuid().primaryKey().defaultRandom(),
   name: text().notNull(),
   email: text().notNull().unique(),
-})
+});
+
+export const courses = pgTable("courses", {
+  id: uuid().primaryKey().defaultRandom(),
+  name: text().notNull(),
+  description: text().notNull(),
+});
