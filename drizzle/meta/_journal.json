@@ -43,6 +43,13 @@
       "when": 1755189216078,
       "tag": "0005_mysterious_warhawk",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1755191261054,
+      "tag": "0006_friendly_medusa",
+      "breakpoints": true
     }
   ]
 }
