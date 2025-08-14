@@ -32,23 +32,16 @@ export const createCourseRoute: FastifyPluginAsyncZod = async fastify => {
     async (request, reply) => {
       const { title, description } = request.body
 
-      const result = await db.transaction(async tx => {
-        const [newCourse] = await tx
-          .insert(courses)
-          .values({
-            title,
-            description,
-          })
-          .returning()
+      const [newCourse] = await db
+        .insert(courses)
+        .values({ title, description })
+        .returning()
 
-        if (!newCourse) {
-          throw new Error('Failed to create course')
-        }
+      if (!newCourse) {
+        throw new Error('Failed to create course')
+      }
 
-        return newCourse
-      })
-
-      return reply.status(201).send({ courseId: result.id })
+      return reply.status(201).send({ courseId: newCourse.id })
     }
   )
 }
