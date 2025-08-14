@@ -1,9 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "_version": "22.0.0",
-
   "compilerOptions": {
-    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
+    "lib": [
+      "es2024",
+      "ESNext.Array",
+      "ESNext.Collection",
+      "ESNext.Iterator"
+    ],
     "module": "nodenext",
     "target": "es2022",
     "allowImportingTsExtensions": true,
@@ -23,13 +27,16 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*",
     "server.ts",
-    "drizzle.config.ts"
+    "drizzle.config.ts",
+    "vitest.config.ts"
   ],
   "exclude": [
     "node_modules",

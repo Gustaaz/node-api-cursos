@@ -1,0 +1,1 @@
+CREATE DATABASE minha_base_test;
