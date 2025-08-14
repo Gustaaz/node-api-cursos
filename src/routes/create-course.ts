@@ -1,35 +1,44 @@
-import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
-import { db } from "../database/client.ts";
-import { courses } from "../database/schema.ts";
-import { z } from "zod";
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
+import { z } from 'zod'
+import { db } from '../database/client.ts'
+import { courses } from '../database/schema.ts'
 
-export const createCourseRoute: FastifyPluginAsyncZod = async (fastify) => {
+export const createCourseRoute: FastifyPluginAsyncZod = async fastify => {
   fastify.post(
-    "/courses",
+    '/courses',
     {
       schema: {
-        tags: ["Courses"],
-        summary: "Create a new course",
+        tags: ['Courses'],
+        summary: 'Create a new course',
         body: z.object({
-          title: z.string().min(1, "Title is required"),
-          description: z.string().min(1, "Description is required"),
+          title: z.string().min(1, 'Title is required'),
+          description: z.string().min(1, 'Description is required'),
         }),
         response: {
-          201: z.object({
-            courseId: z.uuid(),
-          }).describe("Curso criado com sucesso"),
+          201: z
+            .object({
+              courseId: z.uuid(),
+            })
+            .describe('Curso criado com sucesso'),
         },
       },
     },
     async (request, reply) => {
-      const { title, description } = request.body;
+      const { title, description } = request.body
 
-      const result = await db.insert(courses).values({
-        title,
-        description,
-      }).returning();
+      const result = await db
+        .insert(courses)
+        .values({
+          title,
+          description,
+        })
+        .returning()
 
-      return reply.status(201).send({ courseId: result[0].id });
+      if (!result[0]) {
+        throw new Error('Failed to create course')
+      }
+
+      return reply.status(201).send({ courseId: result[0].id })
     }
-  );
-};
+  )
+}
